@@ -135,7 +135,7 @@ de-identified pairing/preprocessing protocols.
 
 ## Authors
 
-- **Mohd Azfar** — Independent Researcher, India · azfar45@gmail.com
+- **Mohd Azfar** — Indian Institute of Science, Bengaluru, India · azfar45@gmail.com
 - **Izhar Khan** — Basque Center on Cognition, Brain and Language, San Sebastián, Spain · i.khan@bcbl.eu
 
 Both authors contributed equally to this work.
