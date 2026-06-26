@@ -1,0 +1,13 @@
+# Core (model + training + evaluation)
+torch>=2.0
+numpy>=1.24
+transformers>=4.30        # frozen BioClinicalBERT text encoder
+pyyaml>=6.0               # configs/default.yaml
+
+# EEG data preparation (gtre/preprocess.py: raw EDF -> arrays)
+mne>=1.5                  # read raw EEG (.edf) recordings
+scipy>=1.10               # resampling / band-pass filtering
+
+# Preference generation (gtre/make_preferences.py: GPT-4 (t+, t-) triplets)
+openai>=1.30              # ChatGPT API; needs env var OPENAI_API_KEY
+pandas>=2.0               # read MIMIC-IV-Note tables for phrasing enrichment

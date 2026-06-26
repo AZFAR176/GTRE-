@@ -1,0 +1,37 @@
+# GTRE default configuration (matches the paper's Implementation Details).
+model:
+  d_model: 256          # latent dim d; Z_macro in R^256
+  n_layers: 8           # L
+  n_heads: 8            # H
+  ffn_dim: 800          # FFN inner dimension
+  dropout: 0.1
+  micro_patch_len: 50   # 200 ms @ 250 Hz
+  micro_patch_stride: 25
+  macro_segments: 5     # S : number of 5 s segments
+  spatial_hidden: 128   # 3-layer geometric MLP width
+
+optim:
+  optimizer: adam
+  lr: 5.0e-4
+  batch_size: 1024
+  epochs: 20
+  lr_decay: 0.96        # multiplicative, applied after 80% of training
+
+stage1:
+  lambda_dom: 0.1       # domain-invariance weight
+  n_prototypes: 4       # K global prototypes
+  tau_clip: 0.07
+  tau_proto: 0.1
+
+stage2:
+  beta: 0.1             # Masked-DPO preference scale
+  lambda_margin: 0.3    # adaptive margin lambda in Eq. 3
+  lambda_proto: 0.3     # consistency prototype weight
+  n_prototypes: 8       # K semantic prototypes
+
+data:
+  datasets: [TUSZ, TUAB]       # paired EEG-text corpora
+  auxiliary_text: [MIMIC-IV]   # auxiliary clinical-text corpus
+  sample_rate_hz: 250
+  n_channels: 20
+  text_encoder: emilyalsentzer/Bio_ClinicalBERT  # frozen

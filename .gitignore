@@ -1,0 +1,63 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Tooling / caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+
+# ---- Secrets / credentials (never commit) ----
+.env
+*.env
+secrets.*
+*api_key*
+*apikey*
+
+# ---- Data, checkpoints, generated artifacts (never commit) ----
+# Access-controlled corpora (TUSZ/TUAB/MIMIC) must not be redistributed.
+_example_data/
+my_data/
+my_data_*/
+data/
+datasets/
+preference_meta/
+mimic_text/
+*.edf
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.hdf5
+*.pkl
+*.parquet
+# generated text pairs / reports
+t_pos/
+t_neg/
+reports/
+signals/
+
+# Allow project config/data files that ARE meant to be tracked
+!configs/*.yaml
+!requirements.txt
