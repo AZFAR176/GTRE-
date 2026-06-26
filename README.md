@@ -29,9 +29,6 @@ pip install -r requirements.txt   # torch, numpy, transformers, pyyaml
 
 ### 2. Prepare your own data into folders
 
-The repo never ships data (TUSZ/TUAB/MIMIC-IV are access-controlled). You obtain
-those, preprocess them, and lay them out so files pair **by base name**:
-
 ```
 my_data/
 ├── signals/                # EEG arrays, shape [C, T]  (.npy/.npz/.pt/.csv/.edf)
@@ -45,10 +42,9 @@ my_data/
 ```
 
 Pairing rule: `signals/.../rec_0001.npy` ↔ `reports/rec_0001.txt` (and
-`t_pos/rec_0001.txt`, `t_neg/rec_0001.txt`). If a signal has no matching `.txt`,
-the dataset raises a clear error rather than silently skipping.
+`t_pos/rec_0001.txt`, `t_neg/rec_0001.txt`).
 
-**Generating this from raw corpora.** `gtre/preprocess.py` builds the
+`gtre/preprocess.py` builds the
 `signals/`, `reports/`, `montage.csv`, and `entity_vocab.txt` from raw EDFs.
 Edit the placeholder `RAW_*` paths at the top of that file (`RAW_TUSZ_DIR`,
 `RAW_TUAB_DIR`) to point at your local copies, then:
@@ -62,12 +58,6 @@ a built-in table), band-passes (0.5-45 Hz), resamples to 250 Hz, z-scores per
 channel, and writes one `.npy` + `.txt` per recording. Pass `--entity_vocab
 my_vocab.txt` to use your own clinical-entity vocabulary instead of the starter
 list.
-
-**MIMIC-IV (auxiliary text, Table 3c).** EEG comes from TUSZ and TUAB; MIMIC-IV
-contributes an auxiliary clinical-text corpus that is consumed where it is used
-— in the Stage-2 preference step (`gtre/make_preferences.py --mimic_notes_dir`,
-below), not during EEG preprocessing. The with/without-MIMIC ablation is simply
-running that step with or without `--mimic_notes_dir`.
 
 **Stage-2 preference pairs.** `gtre/make_preferences.py` generates the `t_pos/`
 and `t_neg/` triplets from `reports/` using the ChatGPT API (GPT-4-class), in
