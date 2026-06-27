@@ -1,7 +1,10 @@
-# GTRE: A Physiological-Semantic Foundation Model for Generalizable EEG Analysis
+# # GTRE: A Physiological-Semantic Foundation Model for Generalizable EEG Analysis via Preference-Guided Alignment
 
-Reference implementation of the **Graph-Temporal Relational Encoder (GTRE)** and
-its two-stage preference-guided training (multi-domain grounding → Masked-DPO).
+Reference implementation accompanying **GTRE: A Physiological-Semantic Foundation Model for Generalizable EEG Analysis via Preference-Guided Alignment**.
+
+This repository provides the core model components and training objectives for the Graph-Temporal Relational Encoder (GTRE), including Stage 1 multi-domain EEG-text grounding and Stage 2 Masked-DPO preference refinement.
+
+> **Scope.** This repository does not redistribute TUSZ, TUAB, CHB-MIT, MIMIC-IV, trained checkpoints, expert-validated summaries, or preference pairs. Reproducing the paper results requires access to the original datasets, subject-disjoint splits, and the corresponding text/preference-pair construction protocol.
 
 
 ## What is included
@@ -122,7 +125,7 @@ optimizes the Masked-DPO preference loss over similarity margins.
 ### 5. Evaluate
 
 `gtre/evaluate.py` provides the four protocols from the paper — single-layer MLP
-linear probe, few-shot (5%, frozen encoder), full fine-tuning (SOTA), and
+linear probe, few-shot fine-tuning with 5% labels, full fine-tuning (SOTA), and
 zero-shot (cosine to entity embeddings) — which you call on a downstream
 labeled split.
 
@@ -136,7 +139,7 @@ de-identified pairing/preprocessing protocols.
 ## Authors
 
 - **Mohd Azfar** — Indian Institute of Science, Bengaluru, India · azfar45@gmail.com
-- **Izhar Khan** — Basque Center on Cognition, Brain and Language, San Sebastián, Spain · i.khan@bcbl.eu
+- **Izhar Dad Khan** — Basque Center on Cognition, Brain and Language, San Sebastián, Spain · i.khan@bcbl.eu
 
 Both authors contributed equally to this work.
 
