@@ -4,7 +4,6 @@ Reference implementation accompanying **GTRE: A Physiological-Semantic Foundatio
 
 This repository provides the core model components and training objectives for the Graph-Temporal Relational Encoder (GTRE), including Stage 1 multi-domain EEG-text grounding and Stage 2 Masked-DPO preference refinement.
 
-> **Scope.** This repository does not redistribute TUSZ, TUAB, CHB-MIT, MIMIC-IV, trained checkpoints, expert-validated summaries, or preference pairs. Reproducing the paper results requires access to the original datasets, subject-disjoint splits, and the corresponding text/preference-pair construction protocol.
 
 
 ## What is included
